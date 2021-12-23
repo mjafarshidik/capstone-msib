@@ -1,4 +1,4 @@
-package com.aldion.capstonemsib.ui.consultation
+package com.abiatma.psychologistapp.ui.home
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,29 +7,25 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.aldion.capstonemsib.R
-import com.aldion.capstonemsib.data.entity.Psychologist
+import com.abiatma.psychologistapp.R
+import com.abiatma.psychologistapp.entity.User
 import com.bumptech.glide.Glide
 
-class PsychologistAdapter(
-    private var data: List<Psychologist>,
-    private val listener: (Psychologist) -> Unit
-) : RecyclerView.Adapter<PsychologistAdapter.ListViewHolder>() {
+class HomeAdapter(
+    private var data: List<User>,
+    private val listener: (User) -> Unit
+) : RecyclerView.Adapter<HomeAdapter.ListViewHolder>() {
 
     private lateinit var contextAdapter: Context
 
     class ListViewHolder (view : View) : RecyclerView.ViewHolder(view) {
-        private val tvName: TextView = view.findViewById(R.id.tv_name_show)
-        private val tvType: TextView = view.findViewById(R.id.tv_type)
-        private val tvExperience: TextView = view.findViewById(R.id.tvExperience)
+        private val tvName: TextView = view.findViewById(R.id.userName)
 
-        private val tvImage: ImageView = view.findViewById(R.id.iv_poster_image)
+        private val tvImage: ImageView = view.findViewById(R.id.userImage)
 
-        fun bindItem(data: Psychologist, listener: (Psychologist) -> Unit, context: Context) {
+        fun bindItem(data: User, listener: (User) -> Unit, context: Context) {
 
             tvName.text = data.name
-            tvType.text = data.type
-            tvExperience.text = data.workExperience
 
             Glide.with(context)
                 .load(data.url)
@@ -45,7 +41,7 @@ class PsychologistAdapter(
         val layoutInflater = LayoutInflater.from(parent.context)
         contextAdapter = parent.context
         val inflatedView: View =
-            layoutInflater.inflate(R.layout.item_psycholog, parent, false)
+            layoutInflater.inflate(R.layout.item_chat, parent, false)
 
         return ListViewHolder(inflatedView)
     }

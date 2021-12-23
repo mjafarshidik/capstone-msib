@@ -1,5 +1,6 @@
 package com.aldion.capstonemsib.ui.consultation
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.aldion.capstonemsib.data.entity.Psychologist
@@ -33,6 +34,13 @@ class DetailPsychologistActivity : AppCompatActivity() {
             Glide.with(this@DetailPsychologistActivity)
                 .load(data?.url)
                 .into(imgPsychologist)
+
+            btnChat.setOnClickListener {
+                val intent = Intent(
+                    this@DetailPsychologistActivity,
+                    ChatActivity::class.java).putExtra("data", data)
+                startActivity(intent)
+            }
 
         }
     }

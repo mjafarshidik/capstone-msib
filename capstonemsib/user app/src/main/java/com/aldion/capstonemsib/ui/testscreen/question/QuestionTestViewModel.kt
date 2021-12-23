@@ -4,15 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.aldion.capstonemsib.data.entity.Statement
-import com.aldion.capstonemsib.data.room.StatementRepository
+import com.aldion.capstonemsib.utils.SetData
 
-class QuestionTestViewModel(private val statementRepository: StatementRepository) : ViewModel() {
+class QuestionTestViewModel() :
+    ViewModel() {
 
-    private val _question = MutableLiveData<ArrayList<Statement>>()
+    private val _question = MutableLiveData<List<Statement>>()
 
-    val question: LiveData<ArrayList<Statement>> = _question
+    val question: LiveData<List<Statement>> = _question
 
-    fun getAllStatement() {
-        statementRepository.getAllStatement()
+    fun getQuestion(){
+        _question.value = SetData.getQuestion()
     }
 }
